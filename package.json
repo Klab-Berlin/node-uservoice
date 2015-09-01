@@ -1,0 +1,30 @@
+{
+  "name": "node-uservoice",
+  "version": "0.0.1",
+  "description": " Node User Voice Wrapper ",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "oauth": "^0.9.13",
+    "q": "^1.4.1",
+    "querystring": "^0.2.0"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rouvenherzog/UVWrapper.git"
+  },
+  "author": "rouvenherzog",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rouvenherzog/UVWrapper/issues"
+  },
+  "homepage": "https://github.com/rouvenherzog/UVWrapper"
+}
