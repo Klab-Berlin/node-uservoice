@@ -1,0 +1,29 @@
+<div>
+	<h3> Tickets </h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					#
+				</th>
+				<th>
+					state
+				</th>
+				<th>
+					subject
+				</th>
+				<th>
+					body
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="ticket in tickets">
+				<td>{{ ticket.ticket_number }}</td>
+				<td>{{ ticket.state }}</td>
+				<td>{{ ticket.subject }}</td>
+				<td>{{ ticket.messages[0].body }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

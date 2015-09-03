@@ -1,0 +1,52 @@
+<div class="col-xs-offset-3 col-xs-6">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-xs-2">
+				Consumer Key
+			</label>
+			<div class="col-xs-10">
+				<input
+					class="form-control"
+					ng-model="arguments.consumerKey"
+				/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-2">
+				Consumer Secret
+			</label>
+			<div class="col-xs-10">
+				<input
+					class="form-control"
+					ng-model="arguments.consumerSecret"
+				/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-2">
+				Subdomain
+			</label>
+			<div class="col-xs-10">
+				<input
+					class="form-control"
+					ng-model="arguments.subdomain"
+				/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-2">
+				<!-- PLaceholder. -->
+			</label>
+			<div class="col-xs-10">
+				<button
+					class="btn btn-success"
+					ng-click="authenticate()"
+					ng-disabled="authenticating"
+				>
+					{{ authenticating ? 'Logging into Uservoice.' : 'Log into Uservoice.' }}
+				</button>
+				<span>{{ error }}</span>
+			</div>
+		</div>
+	</form>
+</div>
