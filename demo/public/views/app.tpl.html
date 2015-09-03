@@ -1,0 +1,23 @@
+<div class="container" ng-if="!isAuthenticated()">
+	<uservoice-authenticate>
+	</uservoice-authenticate>
+</div>
+
+<div class="container-fluid" ng-if="isAuthenticated()">
+	<div class="col-xs-12 col-sm-3">
+		<ul class="list-group">
+			<li
+				class="list-group-item"
+				ng-class="{active: active}"
+				ng-repeat="(resource, active) in resources"
+				ng-click="activate(resource)"
+			>
+				{{ resource }}
+			</li>
+		</ul>
+	</div>
+	<div class="col-xs-12 col-sm-9">
+		<uservoice-tickets-list ng-if="resources['Tickets']">
+		</uservoice-tickets-list>
+	</div>
+</div>

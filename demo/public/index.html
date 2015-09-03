@@ -6,15 +6,13 @@
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 	</head>
 	<body ng-app="uservoice">
-		<div class="container" ng-if="!isAuthenticated()">
-			<uservoice-authenticate>
-			</uservoice-authenticate>
+		<div class="container-fluid">
+			<h1 class="col-xs-12">node-uservoice</h1>
 		</div>
-
-		<div class="container" ng-if="isAuthenticated()">
-			<uservoice-tickets-list>
-			</uservoice-tickets-list>
-		</div>
+		<hr />
+		<uservoice>
+		</uservoice>
+		<hr />
 
 		<script type="text/javascript" src="/assets/index.js"></script>
 		<script type="text/javascript" src="/assets/authentication.js"></script>

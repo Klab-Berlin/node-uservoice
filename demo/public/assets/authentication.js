@@ -10,6 +10,28 @@ angular.module('uservoice.authentication', [])
 			};
 			var uservoiceId = null;
 
+			var hasLocalStorage = function() {
+				return window.localStorage;
+			};
+
+			var store = function() {
+				if( hasLocalStorage() )
+					localStorage.setItem('uservoice-credentials', JSON.stringify(credentials));
+			};
+
+			(function retrieve() {
+				if( hasLocalStorage() ) {
+					var retrieved = localStorage.getItem('uservoice-credentials');
+					if( retrieved ) {
+						try {
+							credentials = JSON.parse(retrieved);
+						} catch(e) {
+							localStorage.removeItem('uservoice-credentials');
+						}
+					}
+				}
+			})();
+
 			this.setCredentials = function( args ) {
 				Object.keys(args)
 					.forEach(function(key) {
@@ -17,6 +39,10 @@ angular.module('uservoice.authentication', [])
 					});
 
 				return this;
+			};
+
+			this.getCredentials = function() {
+				return credentials;
 			};
 
 			this.authenticate = function( callback ) {
@@ -34,6 +60,7 @@ angular.module('uservoice.authentication', [])
 					)
 					.then(
 						function( result ) {
+							store();
 							uservoiceId = result.data.id;
 							callback( null, uservoiceId );
 						},
@@ -65,12 +92,7 @@ angular.module('uservoice.authentication', [])
 		'$scope',
 		'uservoice.authentication.AuthenticationService',
 		function( $scope, AuthenticationService ) {
-			$scope.arguments = {
-				domain: null,
-				subdomain: null,
-				consumerKey: null,
-				consumerSecret: null
-			};
+			$scope.arguments = AuthenticationService.getCredentials();
 
 			$scope.authenticating = false;
 			$scope.error = null;
@@ -78,7 +100,6 @@ angular.module('uservoice.authentication', [])
 			$scope.authenticate = function() {
 				$scope.authenticating = true;
 				AuthenticationService
-					.setCredentials($scope.arguments)
 					.authenticate(function( error, result ) {
 						if( error ) {
 							$scope.error = error;
